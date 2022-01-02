@@ -1,0 +1,16 @@
+{
+  "name": "xray vless",
+  "description": "Deploy vless on Heroku.",
+  "keywords": [
+    "vless"
+  ],
+  "env": {
+    "UUID": {
+      "description": "VLESS UUID",
+      "value": "12869396-f9d2-4150-ad75-d2167e6e6165"
+    }
+  },
+  "website": "https://github.com/sleinw/",
+  "repository": "https://github.com/sleinw/Xvless",
+  "stack": "container"
+}
