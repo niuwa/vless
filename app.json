@@ -7,7 +7,7 @@
   "env": {
     "UUID": {
       "description": "VLESS UUID",
-      "value": "12869396-f9d2-4150-ad75-d2167e6e6165"
+      "value": "12869399-f9d2-4150-ad85-d2167e6e6165"
     },
     "WS": {
       "description": "WS path",
