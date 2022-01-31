@@ -7,11 +7,11 @@
   "env": {
     "UUID": {
       "description": "VLESS UUID",
-      "value": "12869399-f9d2-4150-ad85-d2167e6e6165"
+      "value": "1286939a-f9d2-415a-ad85-d2167a6e6165"
     },
     "WS": {
       "description": "WS path",
-      "value": "/app/herokuvless"
+      "value": "/app/herokuless"
     }    
     
   },
