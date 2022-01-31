@@ -11,6 +11,8 @@ vless 性能更加优秀，占用资源更少。
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https://github.com/AmirDare/X1vless)
 
+https://dashboard.heroku.com/new?template=https://github.com/xxx/vless-heroku.git
+
 ## 注意
 
 ### 路径
