@@ -8,9 +8,14 @@
     "UUID": {
       "description": "VLESS UUID",
       "value": "12869396-f9d2-4150-ad75-d2167e6e6165"
-    }
+    },
+    "WS": {
+      "description": "WS path",
+      "value": "/app/herokuvless"
+    }    
+    
   },
-  "website": "https://github.com/AmirDare/",
-  "repository": "https://github.com/AmirDare/X1vless",
+  "website": "https://github.com/kongmadai/",
+  "repository": "https://github.com/kongmadai/X1vless",
   "stack": "container"
 }
