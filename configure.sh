@@ -14,7 +14,7 @@ install -d /usr/local/etc/xray
 cat << EOF > /usr/local/etc/xray/config.json
 {
   "log": {
-    "loglevel": "info"
+    "loglevel": "warning"
   },
   "inbounds": [
     {
