@@ -40,12 +40,41 @@ cat << EOF > /usr/local/etc/xray/config.json
           "path": "$WS"
         }
       }
-    }
+    },
+    
+  
+        {   
+            "port": $PORT,
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password":"$UUID",
+                        "level": 0
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "allowInsecure": false,
+                "wsSettings": {
+                  "path": "/$TJ"
+                }
+            }
+        }  
+    
+    
+    
   ],
   "outbounds": [
     {
       "protocol": "freedom"
-    }
+    },
+        {
+            "protocol": "blackhole",
+            "tag": "blocked"
+        }
   ]
 }
 EOF
