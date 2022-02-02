@@ -60,7 +60,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                 "network": "ws",
                 "allowInsecure": false,
                 "wsSettings": {
-                  "path": "/$TJ"
+                  "path": "$TJ"
                 }
             }
         }  
