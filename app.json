@@ -9,13 +9,17 @@
       "description": "VLESS UUID",
       "value": "1286939a-f9d2-415a-ad85-d2167a6e6165"
     },
-    "WS": {
-      "description": "WS path",
+    "VL": {
+      "description": "VL path",
       "value": "/app/herokuless"
+    },
+    "TJ": {
+      "description": "TJ path",
+      "value": "/app/herokutr"
     }    
     
   },
   "website": "https://github.com/kongmadai/",
-  "repository": "https://github.com/kongmadai/X1vless",
+  "repository": "https://github.com/kongmadai/vless",
   "stack": "container"
 }
