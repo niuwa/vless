@@ -10,7 +10,6 @@ install -m 755 /tmp/xray/geoip.dat /usr/local/bin/geoip.dat
 
 xray -version
 
-
 # Remove temporary directory
 rm -rf /tmp/xray
 
@@ -42,7 +41,6 @@ cat << EOF > /usr/local/etc/xray/config.json
         }
       }
     },
-    
   
         {   
             "port": $PORT,
@@ -57,15 +55,10 @@ cat << EOF > /usr/local/etc/xray/config.json
                 "decryption": "none"
             },
             "streamSettings": {
-                "network": "ws",
-                "allowInsecure": false,
-                "wsSettings": {
-                  "path": "$TJ"
-                }
+                "network": "tcp",
+                "allowInsecure": false
             }
         }  
-    
-    
     
   ],
   "outbounds": [
