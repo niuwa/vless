@@ -40,27 +40,29 @@ cat << EOF > /usr/local/etc/xray/config.json
           "path": "$VL"
         }
       }
-    },
-  
-        {   
-            "port": $PORT,
-            "protocol": "trojan",
-            "settings": {
-                "clients": [
-                    {
-                        "password":"$UUID",
-                        "level": 0
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "allowInsecure": false
-            }
-        }  
+    }
     
   ],
+  
+"routing": {
+  "rules": [
+    {
+      "type": "field",
+      "domain": [
+        "geosite:category-ads-all"
+      ],
+      "outboundTag": "blocked"
+    },
+    {
+      "type": "field",
+      "domain": [
+        "geosite:cn"
+      ],
+      "outboundTag": "blocked"
+    }
+  ]
+},
+  
   "outbounds": [
     {
       "protocol": "freedom"
