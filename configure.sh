@@ -58,14 +58,15 @@ cat << EOF > /usr/local/etc/xray/config.json
       "domain": [
         "geosite:cn"
       ],
-      "outboundTag": "blocked"
+      "outboundTag": "directly"
     }
   ]
 },
   
   "outbounds": [
     {
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "tag":"directly"
     },
         {
             "protocol": "blackhole",
