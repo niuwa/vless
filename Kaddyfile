@@ -1,5 +1,5 @@
 
-:8080 {
+http://127.0.0.1:8888  {
 
 
 reverse_proxy * https://www.taophototours.com {
