@@ -100,9 +100,9 @@ cat << EOF > /Kaddyfile
 
 :443 {
 
-   reverse_proxy /transmission* http://127.0.0.1:9991  
+   reverse_proxy $VL* http://127.0.0.1:2234  
 
-    reverse_proxy * https://www.anneleephotography.com {    
+    reverse_proxy * http://www.anneleephotography.com {    
         header_up Host {www.anneleephotography.com}    
         }
 
