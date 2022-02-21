@@ -23,7 +23,7 @@ cat << EOF > /usr/local/etc/xray/config.json
   "inbounds": [
     {
       "port": $PORT,
-      "protocol": "VLESS",
+      "protocol": "VMESS",
       "settings": {
         "clients": [
           {
@@ -33,7 +33,7 @@ cat << EOF > /usr/local/etc/xray/config.json
             "email": "tcp@in.com"
           }
         ],
-        "decryption": "none",
+
         
                 "fallbacks": [
                     {
@@ -48,9 +48,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": "none",
-        "allowInsecure": false
+        "network": "tcp"
       }
     },
     
