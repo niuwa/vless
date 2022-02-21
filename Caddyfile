@@ -1,0 +1,10 @@
+
+:8080{
+
+reverse_proxy * https://www.taophototours.com {
+    header_up Host {www.taophototours.com}
+    }
+
+}
+
+
