@@ -52,14 +52,14 @@ cat << EOF > /usr/local/etc/xray/config.json
       "domain": [
         "geosite:category-ads-all"
       ],
-      "outboundTag": "blocked"
+      "outboundTag": "block"
     },
     {
       "type": "field",
       "domain": [
         "geosite:cn"
       ],
-      "outboundTag": "directly"
+      "outboundTag": "allow"
     }
   ]
 },
@@ -67,11 +67,11 @@ cat << EOF > /usr/local/etc/xray/config.json
   "outbounds": [
     {
       "protocol": "freedom",
-      "tag":"directly"
+      "tag":"allow"
     },
         {
             "protocol": "blackhole",
-            "tag": "blocked"
+            "tag": "block"
         }
   ]
 }
