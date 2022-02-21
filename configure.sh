@@ -23,7 +23,7 @@ cat << EOF > /usr/local/etc/xray/config.json
   "inbounds": [
     {
       "port": $PORT,
-      "protocol": "VLESS",
+      "protocol": "vless",
       "settings": {
         "clients": [
           {
@@ -40,7 +40,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                     {
                         "dest": 2016
                     },
-                    {
+                     {
                         "path": "$VL", 
                         "dest": 5555,
                         "xver": 1
@@ -49,14 +49,13 @@ cat << EOF > /usr/local/etc/xray/config.json
         
       },
       "streamSettings": {
-  //      "network": "tcp"
-                "network": "ws",
-                "security": "none",
-                "allowInsecure": false,
-                "wsSettings": {
-                    "acceptProxyProtocol": true, 
-                    "path": "$VL" 
-                }
+        "network": "tcp"
+      //          "network": "ws",
+      //          "security": "none",
+      //          "allowInsecure": false,
+      //          "wsSettings": {
+      //              "path": "$VL" 
+      //          }
       }
     },
     
