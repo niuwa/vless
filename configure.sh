@@ -28,27 +28,56 @@ cat << EOF > /usr/local/etc/xray/config.json
         "clients": [
           {
             "id": "$UUID",
-            "alterId": 0
+            "alterId": 0,
+            "level": 0,
+            "email": "zhuantayigeyi@tcp.com"
           }
         ],
         "decryption": "none",
         
                 "fallbacks": [
                     {
-                        "dest": 8001
-                    }   
-                    ]
+                        "dest": 80
+                    },
+                    {
+                        "path": "$VL", 
+                        "dest": 5555,
+                        "xver": 1
+                    }
+                              ]
         
       },
       "streamSettings": {
-//        "network": "tcp"
-        "network": "ws",
-        "allowInsecure": false,      
-        "wsSettings": {
-          "path": "$VL"
-        }
+        "network": "tcp"
       }
-    }
+    },
+    
+         {
+            "port": 5555,
+            "listen": "127.0.0.1",
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",
+                        "alterId": 0,
+                        "level": 0,
+                        "email": "zhuangtalianggeyu@websocket.com"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "allowInsecure": false,
+                "wsSettings": {
+                    "acceptProxyProtocol": true, 
+                    "path": "$VL" 
+                }
+            }
+        }   
+    
     
   ],
   
@@ -59,14 +88,14 @@ cat << EOF > /usr/local/etc/xray/config.json
       "domain": [
         "geosite:category-ads-all"
       ],
-      "outboundTag": "blocked"
+      "outboundTag": "block"
     },
     {
       "type": "field",
       "domain": [
         "geosite:cn"
       ],
-      "outboundTag": "directly"
+      "outboundTag": "allow"
     }
   ]
 },
@@ -74,11 +103,11 @@ cat << EOF > /usr/local/etc/xray/config.json
   "outbounds": [
     {
       "protocol": "freedom",
-      "tag":"directly"
+      "tag":"allow"
     },
         {
             "protocol": "blackhole",
-            "tag": "blocked"
+            "tag": "block"
         }
   ]
 }
