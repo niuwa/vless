@@ -98,7 +98,7 @@ EOF
 
 cat << EOF > /Kaddyfile
 
-:443 {
+http://localhost:443 {
 
    reverse_proxy $VL* http://127.0.0.1:2234  
 
