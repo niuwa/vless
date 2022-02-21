@@ -118,4 +118,4 @@ EOF
 # Run xray caddy
 /usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
 
-caddy run --config /Kaddyfile
+caddy run --config /Kaddyfile --adapter caddyfile
