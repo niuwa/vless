@@ -9,7 +9,7 @@ install -m 755 /tmp/xray/geosite.dat /usr/local/bin/geosite.dat
 install -m 755 /tmp/xray/geoip.dat /usr/local/bin/geoip.dat
 
 xray -version
-
+ 
 # Remove temporary directory
 rm -rf /tmp/xray
 
