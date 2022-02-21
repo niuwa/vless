@@ -36,7 +36,8 @@ cat << EOF > /usr/local/etc/xray/config.json
                 "fallbacks": [
                     {
                         "dest": 8001
-                    }        
+                    }   
+                    ]
         
       },
       "streamSettings": {
