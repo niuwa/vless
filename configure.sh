@@ -37,7 +37,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         
                 "fallbacks": [
                     {
-                        "dest": 8888
+                        "dest": 2019
                     },
                     {
                         "path": "$VL", 
@@ -116,6 +116,8 @@ cat << EOF > /usr/local/etc/xray/config.json
 EOF
 
 # Run xray caddy
-#/usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
+/usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
 
-caddy run --config /Kaddyfile --adapter caddyfile
+caddy run
+
+#caddy run --config /Kaddyfile --adapter caddyfile
