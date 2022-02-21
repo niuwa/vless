@@ -22,7 +22,7 @@ cat << EOF > /usr/local/etc/xray/config.json
   },
   "inbounds": [
     {
-      "port": 2234, //$PORT,
+      "port": $PORT,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -98,9 +98,9 @@ EOF
 
 cat << EOF > /Kaddyfile
 
-http://localhost:443 {
+http://localhost:8088 {
 
-   reverse_proxy $VL* http://127.0.0.1:2234  
+   reverse_proxy $VL* http://127.0.0.1:443
 
     reverse_proxy * http://www.anneleephotography.com {    
         header_up Host {www.anneleephotography.com}    
@@ -116,7 +116,10 @@ EOF
 
 #caddy run 
 
-caddy run --config /Kaddyfile --adapter caddyfile
+#caddy run --config /Kaddyfile --adapter caddyfile
+
+
+netstat
 
 
 
