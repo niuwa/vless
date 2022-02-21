@@ -23,17 +23,17 @@ cat << EOF > /usr/local/etc/xray/config.json
   "inbounds": [
     {
       "port": $PORT,
-      "protocol": "vless",
+      "protocol": "vmess",
       "settings": {
         "clients": [
           {
             "id": "$UUID",
             "alterId": 0,
             "level": 0,
-            "email": "vless@in.com"
+            "email": "vmess@in.com"
           }
         ],
-        "decryption": "none",
+        //"decryption": "none",
 
                 "fallbacks": [
                     {
@@ -49,18 +49,18 @@ cat << EOF > /usr/local/etc/xray/config.json
         
       },
       "streamSettings": {
-      //  "network": "tcp"
+        "network": "tcp"
       
       //  "network": "grpc",
       //  "grpcSettings": {
       //    "serviceName": "$VL" 
           
-                "network": "ws",
-                "security": "none",
-                "allowInsecure": false,
-                "wsSettings": {            
-                    "path": "$VL" 
-                }       
+      //          "network": "ws",
+      //          "security": "none",
+      //          "allowInsecure": false,
+      //          "wsSettings": {            
+      //              "path": "$VL" 
+      //          }       
         }   
       }
     },
