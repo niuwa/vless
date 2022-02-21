@@ -31,7 +31,13 @@ cat << EOF > /usr/local/etc/xray/config.json
             "alterId": 0
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        
+                "fallbacks": [
+                    {
+                        "dest": 8001
+                    }        
+        
       },
       "streamSettings": {
         "network": "tcp"
