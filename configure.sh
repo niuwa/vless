@@ -41,12 +41,12 @@ cat << EOF > /usr/local/etc/xray/config.json
         
       },
       "streamSettings": {
-        "network": "tcp"
-//        "network": "ws",
-//        "allowInsecure": false,      
-//        "wsSettings": {
-//          "path": "$VL"
-//        }
+//        "network": "tcp"
+        "network": "ws",
+        "allowInsecure": false,      
+        "wsSettings": {
+          "path": "$VL"
+        }
       }
     }
     
