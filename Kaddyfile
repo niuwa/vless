@@ -1,4 +1,9 @@
 
+localhost:2016 {
+	respond "Goodbye, world!"
+}
+
+
 :8080 {
 	# Set this path to your site's directory.
 	root * /usr/share/caddy
