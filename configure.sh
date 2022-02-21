@@ -33,19 +33,19 @@ cat << EOF > /usr/local/etc/xray/config.json
             "email": "vless@in.com"
           }
         ],
-        "decryption": "none",
+        "decryption": "none"//,
 
-                "fallbacks": [
-                    {
-                        "dest": 2016
-                    }
+           //     "fallbacks": [
+           //         {
+           //             "dest": 2016
+           //         }
                     
                     // {
                     //    "path": "$VL", 
                     //    "dest": 5555,
                     //    "xver": 1
                     // }
-                              ]
+            //                  ]
         
       },
       "streamSettings": {
