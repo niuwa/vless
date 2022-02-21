@@ -1,8 +1,8 @@
 
-http://localhost:2016 {
+localhost:2016 {
         respond "Hello, world!"
         }
-}
+
 
 
 # Refer to the Caddy docs for more information:
