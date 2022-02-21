@@ -116,6 +116,6 @@ cat << EOF > /usr/local/etc/xray/config.json
 EOF
 
 # Run xray caddy
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
+#/usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
 
 caddy run --config /Kaddyfile --adapter caddyfile
