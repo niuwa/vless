@@ -30,7 +30,7 @@ cat << EOF > /usr/local/etc/xray/config.json
             "id": "$UUID",
             "alterId": 0,
             "level": 0,
-            "email": "grpc@in.com"
+            "email": "vless@in.com"
           }
         ],
         "decryption": "none",
@@ -39,6 +39,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                     {
                         "dest": 2016
                     },
+                    
                      {
                         "path": "$VL", 
                         "dest": 5555,
@@ -49,9 +50,17 @@ cat << EOF > /usr/local/etc/xray/config.json
       },
       "streamSettings": {
       //  "network": "tcp"
-        "network": "grpc",
-        "grpcSettings": {
-          "serviceName": "$VL" 
+      
+      //  "network": "grpc",
+      //  "grpcSettings": {
+      //    "serviceName": "$VL" 
+          
+                "network": "ws",
+                "security": "none",
+                "allowInsecure": false,
+                "wsSettings": {            
+                    "path": "$VL" 
+                }       
         }   
       }
     },
