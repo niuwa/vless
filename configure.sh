@@ -33,20 +33,7 @@ cat << EOF > /usr/local/etc/xray/config.json
             "email": "vless@in.com"
           }
         ],
-        "decryption": "none",
-
-                "fallbacks": [
-                    {
-                        "dest": 2016
-                    }
-                    
-                    // {
-                    //    "path": "$VL", 
-                    //    "dest": 5555,
-                    //    "xver": 1
-                    // }
-                              ]
-        
+        "decryption": "none"
       },
       "streamSettings": {
       //  "network": "tcp"
@@ -64,33 +51,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                 
         }   
      
-    },
-    
-         {
-            "port": 5555,
-            "listen": "127.0.0.1",
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$UUID",
-                        "alterId": 0,
-                        "level": 0,
-                        "email": "wss@in.com"
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none",
-                "allowInsecure": false,
-                "wsSettings": {
-                    "acceptProxyProtocol": true, 
-                    "path": "$VL" 
-                }
-            }
-        }   
+    } 
     
     
   ],
@@ -135,12 +96,18 @@ cat << EOF > /usr/local/etc/xray/config.json
 }
 EOF
 
+cat << EOF > /Kaddyfile
+
+
+EOF
+
+
 # Run xray caddy
 /usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
 
-#caddy run 
+caddy run 
 
-caddy run --config /Kaddyfile --adapter caddyfile
+#caddy run --config /Kaddyfile --adapter caddyfile
 
-netstat -ntlp
+
 
