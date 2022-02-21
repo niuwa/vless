@@ -33,6 +33,7 @@ cat << EOF > /usr/local/etc/xray/config.json
             "email": "tcp@in.com"
           }
         ],
+        "decryption": "none",
 
         
                 "fallbacks": [
@@ -48,7 +49,14 @@ cat << EOF > /usr/local/etc/xray/config.json
         
       },
       "streamSettings": {
-        "network": "tcp"
+  //      "network": "tcp"
+                "network": "ws",
+                "security": "none",
+                "allowInsecure": false,
+                "wsSettings": {
+                    "acceptProxyProtocol": true, 
+                    "path": "$VL" 
+                }
       }
     },
     
