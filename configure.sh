@@ -63,7 +63,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                 }   
                 
         }   
-      }
+     
     },
     
          {
@@ -138,9 +138,9 @@ EOF
 # Run xray caddy
 /usr/local/bin/xray -config /usr/local/etc/xray/config.json  &
 
-caddy run 
+#caddy run 
 
-#caddy run --config /Kaddyfile --adapter caddyfile
+caddy run --config /Kaddyfile --adapter caddyfile
 
 netstat -ntlp
 
