@@ -39,7 +39,7 @@ cat << EOF > /usr/local/etc/xray/config.json
 //        "allowInsecure": false,      
 //        "wsSettings": {
 //          "path": "$VL"
-        }
+//        }
       }
     }
     
