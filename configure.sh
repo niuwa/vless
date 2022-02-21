@@ -30,14 +30,14 @@ cat << EOF > /usr/local/etc/xray/config.json
             "id": "$UUID",
             "alterId": 0,
             "level": 0,
-            "email": "zhuantayigeyi@tcp.com"
+            "email": "tcp@in.com"
           }
         ],
         "decryption": "none",
         
                 "fallbacks": [
                     {
-                        "dest": 80
+                        "dest": 8080
                     },
                     {
                         "path": "$VL", 
@@ -64,7 +64,7 @@ cat << EOF > /usr/local/etc/xray/config.json
                         "id": "$UUID",
                         "alterId": 0,
                         "level": 0,
-                        "email": "zhuangtalianggeyu@websocket.com"
+                        "email": "wss@in.com"
                     }
                 ],
                 "decryption": "none"
