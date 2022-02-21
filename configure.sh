@@ -37,7 +37,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         
                 "fallbacks": [
                     {
-                        "dest": 2019
+                        "dest": 80
                     },
                     {
                         "path": "$VL", 
