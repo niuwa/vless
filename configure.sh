@@ -78,5 +78,5 @@ cat << EOF > /usr/local/etc/xray/config.json
 EOF
 
 # Run xray
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json & sleep 10 & netstat 
+/usr/local/bin/xray -config /usr/local/etc/xray/config.json 
 
