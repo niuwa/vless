@@ -1,7 +1,6 @@
 
-http://localhost:2016 {
-        reverse_proxy * https://www.anneleephotography.com {    
-        header_up Host {www.anneleephotography.com}    
+localhost:2016 {
+        respond "Hello, world!"
         }
 }
 
