@@ -34,10 +34,11 @@ cat << EOF > /usr/local/etc/xray/config.json
         "decryption": "none"
       },
       "streamSettings": {
-        "network": "ws",
-        "allowInsecure": false,      
-        "wsSettings": {
-          "path": "$VL"
+        "network": "tcp"
+//        "network": "ws",
+//        "allowInsecure": false,      
+//        "wsSettings": {
+//          "path": "$VL"
         }
       }
     }
