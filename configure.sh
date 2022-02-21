@@ -30,12 +30,11 @@ cat << EOF > /usr/local/etc/xray/config.json
             "id": "$UUID",
             "alterId": 0,
             "level": 0,
-            "email": "tcp@in.com"
+            "email": "grpc@in.com"
           }
         ],
         "decryption": "none",
 
-        
                 "fallbacks": [
                     {
                         "dest": 2016
@@ -49,13 +48,11 @@ cat << EOF > /usr/local/etc/xray/config.json
         
       },
       "streamSettings": {
-        "network": "tcp"
-      //          "network": "ws",
-      //          "security": "none",
-      //          "allowInsecure": false,
-      //          "wsSettings": {
-      //              "path": "$VL" 
-      //          }
+      //  "network": "tcp"
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "$VL" 
+        }   
       }
     },
     
@@ -97,6 +94,14 @@ cat << EOF > /usr/local/etc/xray/config.json
       ],
       "outboundTag": "block"
     },
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "block"
+      },    
+    
     {
       "type": "field",
       "domain": [
