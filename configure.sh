@@ -22,7 +22,7 @@ cat << EOF > /usr/local/etc/xray/config.json
   },
   "inbounds": [
     {
-      "port": $PORT,
+      "port": 444,// $PORT,
       "protocol": "VLESS",
       "settings": {
         "clients": [
@@ -172,7 +172,7 @@ server.errorlog             = "/var/log/lighttpd/error.log"
 server.pid-file             = "/var/run/lighttpd.pid"
 #server.username             = "www-data"
 #server.groupname            = "www-data"
-server.port                 = 8080
+server.port                 = 443
 
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
 url.access-deny             = ( "~", ".inc" )
@@ -190,7 +190,7 @@ static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 EOF
 
 # Run xray
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json &
+#/usr/local/bin/xray -config /usr/local/etc/xray/config.json &
 lighttpd -f /etc/lighttpd/lighttpd.conf
 
 
