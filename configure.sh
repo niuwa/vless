@@ -184,13 +184,13 @@ compress.filetype           = ( "application/javascript", "text/css", "text/html
 # default listening port for IPv6 falls back to the IPv4 port
 ## Use ipv6 if available
 #include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
-include_shell "/usr/share/lighttpd/create-mime.assign.pl"
-include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
+#include_shell "/usr/share/lighttpd/create-mime.assign.pl"
+#include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 
 EOF
 
 # Run xray
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json &
+/usr/local/bin/xray -config /usr/local/etc/xray/config.json 
 lighttpd -f /etc/lighttpd/lighttpd.conf
 
 
