@@ -158,7 +158,7 @@ EOF
 
 echo "App is running" > /var/www/localhost/htdocs/index.html
 
-cat << EOF > /usr/local/etc/lighttpd/www.conf
+cat << EOF > /etc/lighttpd/lighttpd.conf
 server.modules = (
             "mod_access",
             "mod_alias",
@@ -191,6 +191,6 @@ EOF
 
 # Run xray
 /usr/local/bin/xray -config /usr/local/etc/xray/config.json &
-lighttpd -f /usr/local/etc/lighttpd/www.conf
+lighttpd -f /etc/lighttpd/lighttpd.conf
 
 
