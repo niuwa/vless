@@ -162,24 +162,24 @@ cat << EOF > /etc/lighttpd/lighttpd.conf
 server.modules = (
             "mod_access",
             "mod_alias",
-            "mod_compress",
+#            "mod_compress",
             "mod_redirect",
 )
 
 server.document-root        = "/var/www/localhost/htdocs/"
-server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
+#server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
 server.errorlog             = "/var/log/lighttpd/error.log"
 server.pid-file             = "/var/run/lighttpd.pid"
-server.username             = "www-data"
-server.groupname            = "www-data"
+#server.username             = "www-data"
+#server.groupname            = "www-data"
 server.port                 = 80
 
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
 url.access-deny             = ( "~", ".inc" )
 static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 
-compress.cache-dir          = "/var/cache/lighttpd/compress/"
-compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
+#compress.cache-dir          = "/var/cache/lighttpd/compress/"
+#compress.filetype           = ( "application/javascript", "text/css", "text/html", "text/plain" )
 
 # default listening port for IPv6 falls back to the IPv4 port
 ## Use ipv6 if available
