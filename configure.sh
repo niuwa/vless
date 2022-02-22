@@ -1,21 +1,21 @@
 #!/bin/sh
 
-# Download and install xray
-mkdir /tmp/xray
-curl -L -H "Cache-Control: no-cache" -o /tmp/xray/xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
-unzip /tmp/xray/xray.zip -d /tmp/xray
-install -m 755 /tmp/xray/xray /usr/local/bin/xray
-install -m 755 /tmp/xray/geosite.dat /usr/local/bin/geosite.dat
-install -m 755 /tmp/xray/geoip.dat /usr/local/bin/geoip.dat
+# Download and install ssray
+mkdir /tmp/ssray
+curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
+unzip /tmp/ssray/xray.zip -d /tmp/ssray
+install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
+install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
+install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
 
-xray -version
+ssray -version
 
 # Remove temporary directory
-rm -rf /tmp/xray
+rm -rf /tmp/ssray
 
-# xray new configuration
-install -d /usr/local/etc/xray
-cat << EOF > /usr/local/etc/xray/config.json
+# ssray new configuration
+install -d /usr/local/etc/ssray
+cat << EOF > /usr/local/etc/ssray/config.json
 {
   "log": {
     "loglevel": "warning"
@@ -23,7 +23,7 @@ cat << EOF > /usr/local/etc/xray/config.json
   "inbounds": [
     {
       "port": $PORT,
-      "protocol": "VLESS",
+      "protocol": "vless",
       "settings": {
         "clients": [
           {
@@ -36,7 +36,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         
                 "fallbacks": [
                     {
-                        "dest": "www.anneleephotography.com:443"
+                        "dest": "198.49.23.144:80"
                     },
                     {
                         "path": "$VL", 
@@ -56,11 +56,6 @@ cat << EOF > /usr/local/etc/xray/config.json
       "streamSettings": {
         "network": "tcp",
         "security": "none"
-//        "network": "ws",
-//        "allowInsecure": false,      
-//        "wsSettings": {
-//          "path": "$VL"
-//        }
       }
     },
         {
@@ -124,6 +119,7 @@ cat << EOF > /usr/local/etc/xray/config.json
       ],
       "outboundTag": "block"
     },
+    
     {
       "type": "field",
       "domain": [
@@ -158,27 +154,6 @@ EOF
 
 echo "App is running" > /var/www/localhost/htdocs/index.html
 
-cat << EOF > /etc/lighttpd/lighttpd.conf
-server.modules = (
-            "mod_access",
-            "mod_alias",
-            "mod_redirect",
-)
-
-server.document-root        = "/var/www/localhost/htdocs/"
-server.errorlog             = "/var/log/lighttpd/error.log"
-server.pid-file             = "/var/run/lighttpd.pid"
-server.port                 = 443
-
-index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
-url.access-deny             = ( "~", ".inc" )
-static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
-
-
-EOF
-
-# Run xray
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json 
-#lighttpd -f /etc/lighttpd/lighttpd.conf
-
+# Run ssray
+/usr/local/bin/ssray -config /usr/local/etc/ssray/config.json 
 
