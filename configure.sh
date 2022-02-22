@@ -190,7 +190,7 @@ compress.filetype           = ( "application/javascript", "text/css", "text/html
 EOF
 
 # Run xray
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json 
+/usr/local/bin/xray -config /usr/local/etc/xray/config.json &
 lighttpd -f /etc/lighttpd/lighttpd.conf
 
 
