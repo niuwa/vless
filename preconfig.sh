@@ -2,8 +2,8 @@
 
 # Download and install ssray
 mkdir /tmp/ssray
-curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
-unzip /tmp/ssray/xray.zip -d /tmp/ssray
+curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
+unzip /tmp/ssray/temp.zip -d /tmp/ssray
 install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
 install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
 install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
@@ -152,7 +152,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
 }
 EOF
 
-echo "App is running" > /var/www/localhost/htdocs/index.html
+#echo "App is running" > /var/www/localhost/htdocs/index.html
 
 # Run ssray
 /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json 
