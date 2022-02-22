@@ -28,21 +28,91 @@ cat << EOF > /usr/local/etc/xray/config.json
         "clients": [
           {
             "id": "$UUID",
-            "alterId": 0
+            "email": "vless@tcp"
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        
+        
+                "fallbacks": [
+                    {
+                        "dest": 80
+                    },
+                    {
+                        "path": "$VL", 
+                        "dest": 2222,
+                        "xver": 1
+                    },
+                    {
+                        "path": "$VM", 
+                        "dest": 3333,
+                        "xver": 1
+                    }
+                ]        
+        
+        
+        
       },
       "streamSettings": {
-//        "network": "tcp"
-        "network": "ws",
-        "allowInsecure": false,      
-        "wsSettings": {
-          "path": "$VL"
-        }
+        "network": "tcp",
+        "security": "none"
+//        "network": "ws",
+//        "allowInsecure": false,      
+//        "wsSettings": {
+//          "path": "$VL"
+//        }
       }
-    }
+    },
+        {
+            "port": 2222,
+            "listen": "127.0.0.1",
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID", 
+                        "level": 0,
+                        "email": "vless@wss"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "allowInsecure": false,  
+                "wsSettings": {
+                    "acceptProxyProtocol": true, 
+                    "path": "$VL" 
+                }
+            }
+        },
     
+          {
+            "port": 3333,
+            "listen": "127.0.0.1",
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID",  
+                        //"alterId": 32,
+                        "level": 0,
+                        "email": "vmess@wss"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "allowInsecure": false,  
+                "wsSettings": {
+                    "acceptProxyProtocol": true, 
+                    "path": "$VM" 
+                }
+            }
+        }
+    
+
   ],
   
 "routing": {
@@ -60,7 +130,16 @@ cat << EOF > /usr/local/etc/xray/config.json
         "geosite:cn"
       ],
       "outboundTag": "allow"
-    }
+    },
+           {
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "block"
+            }    
+    
+    
   ]
 },
   
@@ -77,6 +156,11 @@ cat << EOF > /usr/local/etc/xray/config.json
 }
 EOF
 
+echo "App is running" > /var/www/localhost/htdocs/index.html
+
+
 # Run xray
-/usr/local/bin/xray -config /usr/local/etc/xray/config.json 
+/usr/local/bin/xray -config /usr/local/etc/xray/config.json &
+rc-service lighttpd start
+
 
