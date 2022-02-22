@@ -36,7 +36,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         
                 "fallbacks": [
                     {
-                        "dest": 8080
+                        "dest": "www.anneleephotography.com:443"
                     },
                     {
                         "path": "$VL", 
