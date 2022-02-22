@@ -36,7 +36,7 @@ cat << EOF > /usr/local/etc/xray/config.json
         
                 "fallbacks": [
                     {
-                        "dest": 80
+                        "dest": 8080
                     },
                     {
                         "path": "$VL", 
@@ -172,7 +172,7 @@ server.errorlog             = "/var/log/lighttpd/error.log"
 server.pid-file             = "/var/run/lighttpd.pid"
 #server.username             = "www-data"
 #server.groupname            = "www-data"
-server.port                 = 80
+server.port                 = 8080
 
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
 url.access-deny             = ( "~", ".inc" )
