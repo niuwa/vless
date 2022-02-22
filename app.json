@@ -7,15 +7,15 @@
   "env": {
     "UUID": {
       "description": "VLESS UUID",
-      "value": "1286939a-f9d2-415a-ad85-d2167a6e6165"
+      "value": "86939a56-9d2f-415a-ad85-167a6e61655a"
     },
     "VL": {
       "description": "VL path",
-      "value": "/app/herokuless"
+      "value": "/app/heroku1111s"
     },
-    "TJ": {
-      "description": "TJ path",
-      "value": "/app/herokutr"
+    "VM": {
+      "description": "VM path",
+      "value": "/app/hero1111"
     }    
     
   },
