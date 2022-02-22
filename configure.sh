@@ -161,6 +161,6 @@ echo "App is running" > /var/www/localhost/htdocs/index.html
 
 # Run xray
 /usr/local/bin/xray -config /usr/local/etc/xray/config.json &
-rc-service lighttpd start
+lighttpd start
 
 
