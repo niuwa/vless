@@ -16,7 +16,13 @@
     "VM": {
       "description": "VM path",
       "value": "/app/hero1111"
-    }    
+    },
+    "TR": {
+      "description": "TR path",
+      "value": "/app/hero1111gff"
+    }        
+    
+    
     
   },
   "website": "https://github.com/kongmadai/",
