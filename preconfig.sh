@@ -47,7 +47,13 @@ cat << EOF > /usr/local/etc/ssray/config.json
                         "path": "$VM", 
                         "dest": 3333,
                         "xver": 1
+                    },
+                    {
+                        "path": "$TR",
+                        "dest": 4444,
+                        "xver": 1
                     }
+                        
                 ]        
         
         
@@ -105,7 +111,31 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     "path": "$VM" 
                 }
             }
-        }
+        },
+        
+        
+          {
+            "port": 4444,
+            "listen": "127.0.0.1",
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "$UUID",  
+                        "level": 0,
+                        "email": "trojan@wss"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "allowInsecure": false,  
+                "wsSettings": {
+                    "acceptProxyProtocol": true, 
+                    "path": "$TR" 
+                }
+            }
+        }        
     
 
   ],
