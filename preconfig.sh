@@ -8,7 +8,7 @@ install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
 install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
 install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
 
-ssray -version
+#ssray -version
 
 # Remove temporary directory
 rm -rf /tmp/ssray
