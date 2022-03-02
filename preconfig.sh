@@ -18,7 +18,7 @@ install -d /usr/local/etc/ssray
 cat << EOF > /usr/local/etc/ssray/config.json
 {
   "log": {
-    "loglevel": "debug"
+    "loglevel": "info"
   },
   "inbounds": [
     {
