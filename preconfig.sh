@@ -21,7 +21,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
     "loglevel": "info"
   },
   "inbounds": [
-    {
+    { 
       "port": $PORT,
       "protocol": "vless",
       "settings": {
