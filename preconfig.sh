@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # Download and install ssray
-mkdir /tmp/ssray
-curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
-unzip /tmp/ssray/temp.zip -d /tmp/ssray
-install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
-install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
-install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
+#mkdir /tmp/ssray
+#curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
+#unzip /tmp/ssray/temp.zip -d /tmp/ssray
+#install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
+#install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
+#install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
 
 #ssray -version
 
 # Remove temporary directory
-rm -rf /tmp/ssray
+#rm -rf /tmp/ssray
 
 # ssray new configuration
 install -d /usr/local/etc/ssray
@@ -33,7 +33,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
         ],
         "decryption": "none",
         
-        
                 "fallbacks": [
                     {
                         "dest": "198.49.23.144:80"
@@ -52,12 +51,8 @@ cat << EOF > /usr/local/etc/ssray/config.json
                         "path": "$TR",
                         "dest": 4444,
                         "xver": 1
-                    }
-                        
+                    }  
                 ]        
-        
-        
-        
       },
       "streamSettings": {
         "network": "tcp",
@@ -111,9 +106,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     "path": "$VM" 
                 }
             }
-        },
-        
-        
+        }, 
           {
             "port": 4444,
             "listen": "127.0.0.1",
@@ -136,10 +129,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 }
             }
         }        
-    
-
   ],
-  
 "routing": {
   "rules": [
     {
@@ -149,7 +139,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
       ],
       "outboundTag": "block"
     },
-    
     {
       "type": "field",
       "domain": [
@@ -164,11 +153,8 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 ],
                 "outboundTag": "block"
             }    
-    
-    
   ]
 },
-  
   "outbounds": [
     {
       "protocol": "freedom",
