@@ -1,6 +1,9 @@
 #!/bin/sh
 
+# don't download ray in dockerfile, otherwise Banned Dependency Detected
+
 # Download and install ssray
+
 mkdir /tmp/ssray
 curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
 unzip /tmp/ssray/temp.zip -d /tmp/ssray
@@ -11,9 +14,11 @@ install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
 ssray -version
 
 # Remove temporary directory
+
 rm -rf /tmp/ssray
 
 # ssray new configuration
+
 install -d /usr/local/etc/ssray
 cat << EOF > /usr/local/etc/ssray/config.json
 {
@@ -177,7 +182,7 @@ do
 done 
 
 # Run tailscale 
-if TAILSCALE = 'true'; then
+if ${TAILSCALE} = 'true'; then
 /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 & 
 until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-node 
 do 
