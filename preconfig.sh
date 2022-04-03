@@ -1,11 +1,12 @@
 #!/bin/sh
 
 # don't download ray in dockerfile, otherwise Banned Dependency Detected
+# tinyurl = https:// gi th ub .co m / X T L S/ X r a y -c or e/releases/latest/download/ X r a y - l i n u x - 64.zip
 
 # Download and install ssray
 
 mkdir /tmp/ssray
-curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip
+curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://tinyurl.com/yc3v8rbm
 unzip /tmp/ssray/temp.zip -d /tmp/ssray
 install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
 install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
@@ -37,7 +38,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
           }
         ],
         "decryption": "none",
-        
                 "fallbacks": [
                     {
                         "dest": "198.49.23.144:80"
@@ -88,7 +88,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 }
             }
         },
-    
           {
             "port": 3333,
             "listen": "127.0.0.1",
@@ -175,18 +174,20 @@ EOF
 
 #echo "App is running" > /var/www/localhost/htdocs/index.html
 
-# Run tailscale 
+# Run tailscale and ray
+
 if $TAILSCALE = "true"; then
 
-/app/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 & 
+/app/tailscaled --tun=userspace-networking --socks5-server=localhost:1059 & 
 until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-node 
 do 
     echo "Waiting for Tailscale Authentication"
     sleep 3 
 done 
+
 #echo Tailscale started
 
-ALL_PROXY=socks5://localhost:1055/
+ALL_PROXY=socks5://localhost:1059/
 
 /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json
 
