@@ -20,10 +20,24 @@
     "TR": {
       "description": "TR path",
       "value": "/app/hero1111gff"
-    }        
-    
-    
-    
+    },
+    "PORT": {
+      "description": "listen",
+      "value": "443"
+    },
+    "TAILSCALE": {
+      "description": "TAILSCALE switch",
+      "value": "false"
+    },
+    "HOST": {
+      "description": "TAILSCALE hostname",
+      "value": "heroku"
+    },
+    "AUTH": {
+      "description": "TAILSCALE auth key",
+      "value": "key"
+    }                    
+
   },
   "website": "https://github.com/kongmadai/",
   "repository": "https://github.com/kongmadai/vless",
