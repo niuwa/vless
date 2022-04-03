@@ -178,7 +178,7 @@ EOF
 # Run tailscale 
 if $TAILSCALE = "true"; then
 
-/usr/local/bin/ssray -config /usr/local/etc/ssray/config.json && /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1059 & 
+/usr/local/bin/ssray -config /usr/local/etc/ssray/config.json & /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1059 & 
 until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-node 
 do 
     sleep 1  
