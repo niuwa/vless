@@ -178,15 +178,13 @@ EOF
 # Run tailscale 
 if $TAILSCALE = "true"; then
 
-ALL_PROXY=socks5://localhost:1055/
-
-/usr/local/bin/ssray -config /usr/local/etc/ssray/config.json & /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 & 
+/app/tailscaled --tun=userspace-networking --socks5-server=localhost:1055 & 
 until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-node 
 do 
-    sleep 1  
+    sleep 3 
 done 
-#echo Tailscale started
-
+echo Tailscale started
+ALL_PROXY=socks5://localhost:1055/
 
 
 else
