@@ -183,6 +183,9 @@ until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-no
 do 
     sleep 1  
 done 
+echo Tailscale started
+ALL_PROXY=socks5://localhost:1059/
+
 
 else
 
