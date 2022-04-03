@@ -174,7 +174,9 @@ EOF
 
 #echo "App is running" > /var/www/localhost/htdocs/index.html
 
-# Run tailscale and ray
+
+
+# Run tailscale and ray  refer to https://tailscale.com/kb/1112/userspace-networking/
 
 if $TAILSCALE = "true"; then
 
@@ -186,8 +188,7 @@ do
 done 
 
 #echo Tailscale started
-
-ALL_PROXY=socks5://localhost:1059/
+#ALL_PROXY=socks5://localhost:1059/
 
 /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json
 
