@@ -175,12 +175,6 @@ EOF
 
 #echo "App is running" > /var/www/localhost/htdocs/index.html
 
-# Run ssray
-until /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json 
-do 
-    sleep 1  
-done 
-
 # Run tailscale 
 #if $TAILSCALE = "true"; then
 /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1059 & 
@@ -189,3 +183,12 @@ do
     sleep 1  
 done 
 #fi
+
+
+# Run ssray
+until /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json 
+do 
+    sleep 1  
+done 
+
+
