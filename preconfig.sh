@@ -182,7 +182,7 @@ do
 done 
 
 # Run tailscale 
-if ${TAILSCALE} = 'true'; then
+if $TAILSCALE = "true"; then
 /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1059 & 
 until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-node 
 do 
