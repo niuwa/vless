@@ -26,6 +26,14 @@ cat << EOF > /usr/local/etc/ssray/config.json
   "log": {
     "loglevel": "info"
   },
+  
+    "dns": {
+    "servers": [
+      "https+local://1.1.1.1/dns-query", 
+      "localhost"
+    ]
+  },
+  
   "inbounds": [
     { 
       "port": $PORT,
@@ -135,6 +143,9 @@ cat << EOF > /usr/local/etc/ssray/config.json
         }        
   ],
 "routing": {
+
+"domainStrategy": "UseIP",
+
   "rules": [
     {
       "type": "field",
