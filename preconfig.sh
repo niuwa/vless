@@ -144,7 +144,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
   ],
 "routing": {
 
-"domainStrategy": "UseIP",
+"domainStrategy": "AsIs",
 
   "rules": [
     {
@@ -173,6 +173,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
   "outbounds": [
     {
       "protocol": "freedom",
+      "settings": { "domainStrategy": "UseIP" },
       "tag":"allow"
     },
         {
