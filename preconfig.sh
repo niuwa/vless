@@ -30,6 +30,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
     "dns": {
     "servers": [
       "https+local://1.1.1.1/dns-query", 
+      "1.0.0.18",
       "localhost"
     ]
   },
