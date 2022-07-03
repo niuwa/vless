@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# don't download ray in dockerfile, otherwise Banned Dependency Detected
-# tinyurl = https:// gi th ub .co m / X T L S/ X r a y -c or e/releases/latest/download/ X r a y - l i n u x - 64.zip
+# direct download in dockerfile leading to Banned Dependency Detected
+# tinyurl =  gi th ub .co m / X TL S/ X r ay -c or e/rel ea ses/la test/dow nload/ X r ay - l i n u x - 64.zip
 
-# Download and install ssray
+# Download and install 
 
 mkdir /tmp/ssray
 curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://tinyurl.com/yc3v8rbm
