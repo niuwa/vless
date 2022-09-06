@@ -97,6 +97,33 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 }
             }
         },
+        
+        {
+            "port": 5555,
+            "listen": "127.0.0.1",
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID", 
+                        "level": 0,
+                        "email": "vless@grpc"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "grpc",
+                "security": "none",
+                "allowInsecure": false,  
+                "grpcSettings": {
+                    "acceptProxyProtocol": true, 
+                    "path": "$GR" 
+                }
+            }
+        },
+        
+        
           {
             "port": 3333,
             "listen": "127.0.0.1",
