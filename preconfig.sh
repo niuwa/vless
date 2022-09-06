@@ -101,7 +101,14 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     "acceptProxyProtocol": true, 
                     "path": "$VL" 
                 }
-            }
+            },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
         },
         
         {
@@ -126,7 +133,14 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     "acceptProxyProtocol": true, 
                     "path": "$GR" 
                 }
-            }
+            },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
         },
         
         
@@ -151,7 +165,14 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     "acceptProxyProtocol": true, 
                     "path": "$VM" 
                 }
-            }
+            },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
         }, 
           {
             "port": 4444,
@@ -173,7 +194,14 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     "acceptProxyProtocol": true, 
                     "path": "$TR" 
                 }
-            }
+            },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
         }        
   ],
 "routing": {
@@ -219,8 +247,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
 EOF
 
 #echo "App is running" > /var/www/localhost/htdocs/index.html
-
-
 
 # Run tailscale and ray  refer to https://tailscale.com/kb/1112/userspace-networking/
 
