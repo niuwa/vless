@@ -53,23 +53,23 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     },
                     {
                         "path": "$VL", 
-                        "dest": 2222,
+                        "dest": "/dev/shm/vl.socket",// 2222,
                         "xver": 1
                     },
                     
                     {
                         "path": "/$GR", 
-                        "dest": 5555,
+                        "dest": "/dev/shm/gr.socket",//  5555,
                         "xver": 1
                     },
                     {
                         "path": "$VM", 
-                        "dest": 3333,
+                        "dest": "/dev/shm/vm.socket",  // 3333,
                         "xver": 1
                     },
                     {
                         "path": "$TR",
-                        "dest": 4444,
+                        "dest": "/dev/shm/tr.socket", // 4444,
                         "xver": 1
                     }  
                 ]        
@@ -80,8 +80,9 @@ cat << EOF > /usr/local/etc/ssray/config.json
       }
     },
         {
-            "port": 2222,
-            "listen": "127.0.0.1",
+            //"port": 2222,
+            //"listen": "127.0.0.1",
+            "listen": "/dev/shm/vl.socket,0666",
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -112,8 +113,9 @@ cat << EOF > /usr/local/etc/ssray/config.json
         },
         
         {
-            "port": 5555,
-            "listen": "127.0.0.1",
+            //"port": 5555,
+            //"listen": "127.0.0.1",
+            "listen": "/dev/shm/gr.socket,0666",
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -145,8 +147,9 @@ cat << EOF > /usr/local/etc/ssray/config.json
         
         
           {
-            "port": 3333,
-            "listen": "127.0.0.1",
+           // "port": 3333,
+           // "listen": "127.0.0.1",
+            "listen": "/dev/shm/vm.socket,0666",
             "protocol": "vmess",
             "settings": {
                 "clients": [
@@ -175,8 +178,9 @@ cat << EOF > /usr/local/etc/ssray/config.json
       }
         }, 
           {
-            "port": 4444,
-            "listen": "127.0.0.1",
+           // "port": 4444,
+           // "listen": "127.0.0.1",
+            "listen": "/dev/shm/tr.socket,0666",
             "protocol": "trojan",
             "settings": {
                 "clients": [
