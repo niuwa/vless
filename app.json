@@ -21,6 +21,10 @@
       "description": "TR path",
       "value": "/app/hero1111gff"
     },
+    "GR": {
+      "description": "GR path",
+      "value": "app.grpcnamemin"
+    },
     "PORT": {
       "description": "listen",
       "value": "443"
