@@ -56,6 +56,12 @@ cat << EOF > /usr/local/etc/ssray/config.json
                         "dest": 2222,
                         "xver": 1
                     },
+                    
+                    {
+                        "path": "$GR", 
+                        "dest": 5555,
+                        "xver": 1
+                    },
                     {
                         "path": "$VM", 
                         "dest": 3333,
