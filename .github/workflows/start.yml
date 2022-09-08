@@ -35,18 +35,19 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           pwd
+          ls
           
           
       - name: Rename the file
         run: |
           #mv /home/runner/work/vless/vless/preconfig.sh.backup /home/runner/work/vless/vless/preconfig.sh
-          cp /home/runner/work/vless/vless/preconfig.sh.backup /home/runner/work/vless/vless/preconfig.sh      
-          rm /home/runner/work/vless/vless/preconfig.sh.backup     
+          cp /home/runner/work/vless/vless/preconfig.sh.backup /home/runner/work/vless/vless/preconfig.sh     
       
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git add -A
           git commit -m "Add changes" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
