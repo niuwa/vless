@@ -22,7 +22,7 @@ rm -rf /tmp/ssray
 
 install -d /usr/local/etc/ssray
 cat << EOF > /usr/local/etc/ssray/config.json
-{{
+{
   "log": {
     "loglevel": "info"
   },
