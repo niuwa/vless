@@ -58,7 +58,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     },
                     
                     {
-                        "path": "/$GR", 
+                        "path": "/$GR/", 
                         "dest": "/dev/shm/gr.socket",//  5555,
                         "xver": 1
                     },
@@ -110,8 +110,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
           "tls"
         ]
       }
-        },
-        
+        },     
         {
             //"port": 5555,
             //"listen": "127.0.0.1",
@@ -143,9 +142,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
           "tls"
         ]
       }
-        },
-        
-        
+        },   
           {
            // "port": 3333,
            // "listen": "127.0.0.1",
@@ -269,6 +266,7 @@ done
 /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json
 
 else
+#tailscale false
 
 /usr/local/bin/ssray -config /usr/local/etc/ssray/config.json
 
