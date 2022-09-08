@@ -58,7 +58,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     },
                     
                     {
-                        "path": "/$GR/", 
+                        "path": "/$GR/Tun", 
                         "dest": "/dev/shm/gr.socket",//  5555,
                         "xver": 1
                     },
