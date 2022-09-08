@@ -37,7 +37,7 @@ jobs:
           
           
       - name: Copy the Readmes
-        run: ren ./preconfig.sh.backup ./preconfig.sh
+        run: mv ./preconfig.sh.backup ./preconfig.sh
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
