@@ -112,7 +112,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
       }
         },     
         {
-            //"port": 5555,
+            //"port": 5555,  GRPC需要cadd y分流才可以
             //"listen": "127.0.0.1",
             "listen": "/dev/shm/gr.socket,0666",
             "protocol": "vless",
