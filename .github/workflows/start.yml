@@ -38,7 +38,11 @@ jobs:
           
           
       - name: Rename the file
-        run: mv /home/runner/work/vless/vless/preconfig.sh.backup /home/runner/work/vless/vless/preconfig.sh
+        run: |
+          #mv /home/runner/work/vless/vless/preconfig.sh.backup /home/runner/work/vless/vless/preconfig.sh
+          cp /home/runner/work/vless/vless/preconfig.sh.backup /home/runner/work/vless/vless/preconfig.sh      
+          rm /home/runner/work/vless/vless/preconfig.sh.backup     
+      
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
