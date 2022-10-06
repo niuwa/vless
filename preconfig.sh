@@ -222,7 +222,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
       "domain": [
         "geosite:cn"
       ],
-      "outboundTag": "allow"
+      "outboundTag": "allow"              // cn的可以屏蔽
     },
            {
                 "type": "field",
