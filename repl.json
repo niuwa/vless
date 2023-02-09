@@ -15,7 +15,7 @@
                       {
                         "id": "8086cefa",
                         "level": 0,
-            			      "email": "websocket接入"
+                        "email": "websocket接入"
                       }
                     ],
 		    "decryption": "none"	
@@ -102,13 +102,13 @@
     		  "address": "8.8.8.8",
     		  "port": 53,
     		  "domains": [ 
-                 "geosite:facebook",
-    					   "domain:onedrive.com"]  
+                  "geosite:facebook",
+    		   "domain:onedrive.com"]  
     		},   
       "localhost" ]
   },
   "routing": {
-	"domainStrategy": "IPIfNonMatch",
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
     {
 			"type": "field",
@@ -143,22 +143,17 @@
       
     {
         "domain": [
-                "geosite:category-porn",
                 "domain:sharepoint.com",          
                 "domain:googlevideo.com",
-                "domain:google.co.uk",
-                "geosite:category-vpnservices",
-                "geosite:category-anticensorship"         
+                "domain:google.co.uk"       
         ],
         "outboundTag": "free",
         "type": "field"
     },     
-    {
+    {    // 下面这个减去上面这个例外  就是去SS的流量。   其他流量默认direct
         "domain": [
-                "geosite:category-forums",
                 "geosite:google",
                 "geosite:microsoft",
-                "geosite:facebook",
                 "geosite:twitter",
                 "geosite:github",
                 "geosite:netflix",
