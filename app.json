@@ -29,6 +29,14 @@
       "description": "listen",
       "value": "443"
     },
+    "SShost": {
+      "description": "SSout host",
+      "value": "1.1.1.1"
+    },
+    "SSkey": {
+      "description": "SSout key",
+      "value": "mimima"
+    },
     "TAILSCALE": {
       "description": "TAILSCALE switch",
       "value": "false"
