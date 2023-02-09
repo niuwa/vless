@@ -1,0 +1,168 @@
+{
+  "inbounds": [
+    {
+      "port": 26369,
+      "listen":"127.0.0.1",  
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+                      {
+                        "id": "8086cefa",
+                        "level": 0,
+            			      "email": "websocket接入"
+                      }
+                    ],
+		    "decryption": "none"	
+       },
+      "streamSettings": {
+                      "network": "ws",
+                      "wsSettings": {
+                      "path": "8086ppl",
+                      "acceptProxyProtocol": true
+        } 
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+      { 
+      "port": 8080,
+      "protocol": "vless",
+      "settings": {
+        "decryption":"none",
+        "clients": [
+                    {
+                      "id": "8086cefa",
+                      "email": "TCP接入"
+                    }
+                  ],
+        "fallbacks": [
+              { 
+                  "dest": "109.228.56.253:80" // 198.185.159.144,198.49.23.144查找 ip address: ping scphoto graphy.co.uk
+              },
+              {
+                  "path": "8086ppl", 
+                  "dest": 26369,
+                  "xver": 1
+              }
+        ]        
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": { "domainStrategy": "UseIPv4" },
+      "tag": "free"
+    }, 
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+          "servers": [
+              {
+                  "address": "SShost",
+                  "port": 32824,
+                  "method": "chacha20-ietf-poly1305",
+                  "password": "SSkey"
+              }
+          ]
+      },
+      "streamSettings": {
+          "network": "tcp"
+      },
+      "tag": "SSout"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "blocked"        }
+  ],
+  "log": {  
+      "access": "/tmp/webservice/access.log",
+      "error": "/tmp/webservice/error.log",
+      "loglevel": "info"  
+         },
+  "dns": {
+    "servers": [
+      "https+local://1.1.1.1/dns-query",
+    		{
+    		  "address": "8.8.8.8",
+    		  "port": 53,
+    		  "domains": [ 
+                 "geosite:facebook",
+    					   "domain:onedrive.com"]  
+    		},   
+      "localhost" ]
+  },
+  "routing": {
+	"domainStrategy": "IPIfNonMatch",
+    "rules": [
+    {
+			"type": "field",
+			"ip": ["geoip:private"],
+			"outboundTag": "blocked"
+		},
+      
+    {  
+      "type": "field",
+      "domain": [
+         "domain:aefasdk43fsdafda.com"
+      // "geosite:category-ads-all"    //广告不拦截 free
+      ], 
+      "outboundTag": "blocked"
+    },
+      
+    {
+        "domain": [
+            "domain:google.co.nz",
+            "geosite:cn"
+        ],
+        "outboundTag": "SSout",
+        "type": "field"
+    },              
+		{
+  			"ip": [
+  				"geoip:cn"
+  			],
+			"outboundTag": "SSout",
+			"type": "field"
+		},  
+      
+    {
+        "domain": [
+                "geosite:category-porn",
+                "domain:sharepoint.com",          
+                "domain:googlevideo.com",
+                "domain:google.co.uk",
+                "geosite:category-vpnservices",
+                "geosite:category-anticensorship"         
+        ],
+        "outboundTag": "free",
+        "type": "field"
+    },     
+    {
+        "domain": [
+                "geosite:category-forums",
+                "geosite:google",
+                "geosite:microsoft",
+                "geosite:facebook",
+                "geosite:twitter",
+                "geosite:github",
+                "geosite:netflix",
+                "domain:exoticaz.to",
+                "domain:openai.com"
+        ],
+        "outboundTag": "SSout",
+        "type": "field"
+    } 
+
+    ]
+  }
+}
