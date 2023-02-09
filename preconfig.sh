@@ -210,27 +210,70 @@ cat << EOF > /usr/local/etc/ssray/config.json
 "domainStrategy": "AsIs",
 
   "rules": [
+
+
     {
+			"type": "field",
+			"ip": ["geoip:private"],
+			"outboundTag": "blocked"
+		},
+      
+    {  
       "type": "field",
       "domain": [
-        "geosite:category-ads-all"
-      ],
-      "outboundTag": "block"
+         "domain:aefasdk43fsdafda.com"
+      // "geosite:category-ads-all"    //广告不拦截 free
+      ], 
+      "outboundTag": "blocked"
     },
+      
     {
-      "type": "field",
-      "domain": [
-        "geosite:cn"
-      ],
-      "outboundTag": "allow"              // cn的可以屏蔽
-    },
-           {
-                "type": "field",
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "block"
-            }    
+        "domain": [
+            "domain:google.co.nz",
+            "geosite:cn"
+        ],
+        "outboundTag": "SSout",
+        "type": "field"
+    },              
+		{
+  			"ip": [
+  				"geoip:cn"
+  			],
+			"outboundTag": "SSout",
+			"type": "field"
+		},  
+      
+    {
+        "domain": [
+                "geosite:category-porn",
+                "domain:sharepoint.com",          
+                "domain:googlevideo.com",
+                "domain:google.co.uk",
+                "geosite:category-vpnservices",
+                "geosite:category-anticensorship"         
+        ],
+        "outboundTag": "allow",
+        "type": "field"
+    },     
+    {
+        "domain": [
+                "geosite:category-forums",
+                "geosite:google",
+                "geosite:microsoft",
+                "geosite:facebook",
+                "geosite:twitter",
+                "geosite:github",
+                "geosite:netflix",
+                "domain:exoticaz.to",
+                "domain:openai.com"
+        ],
+        "outboundTag": "SSout",
+        "type": "field"
+    } 
+
+
+
+
   ]
 },
   "outbounds": [
@@ -239,6 +282,25 @@ cat << EOF > /usr/local/etc/ssray/config.json
       "settings": { "domainStrategy": "UseIP" },
       "tag":"allow"
     },
+    
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+          "servers": [
+              {
+                  "address": "$SShost",
+                  "port": 32824,
+                  "method": "chacha20-ietf-poly1305",
+                  "password": "$SSkey"
+              }
+          ]
+      },
+      "streamSettings": {
+          "network": "tcp"
+      },
+      "tag": "SSout"
+    },  
+    
         {
             "protocol": "blackhole",
             "tag": "block"
