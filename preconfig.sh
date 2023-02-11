@@ -8,6 +8,7 @@
 mkdir /tmp/ssray
 curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://tinyurl.com/yc3v8rbm
 unzip /tmp/ssray/temp.zip -d /tmp/ssray
+
 install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
 install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
 install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
@@ -30,7 +31,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
     "dns": {
     "servers": [
       "https+local://1.1.1.1/dns-query", 
-      "1.0.0.18",
+      "8.8.8.8",
       "localhost"
     ]
   },
@@ -207,7 +208,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
   ],
 "routing": {
 
-"domainStrategy": "AsIs",
+"domainStrategy": "IPIfNonMatch",
 
   "rules": [
 
@@ -245,19 +246,16 @@ cat << EOF > /usr/local/etc/ssray/config.json
       
     {
         "domain": [
-                "geosite:category-porn",
                 "domain:sharepoint.com",          
                 "domain:googlevideo.com",
-                "domain:google.co.uk",
-                "geosite:category-vpnservices",
-                "geosite:category-anticensorship"         
+                "domain:google.co.uk"
         ],
         "outboundTag": "allow",
         "type": "field"
     },     
     {
         "domain": [
-                "geosite:category-forums",
+         
                 "geosite:google",
                 "geosite:microsoft",
                 "geosite:facebook",
@@ -270,9 +268,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
         "outboundTag": "SSout",
         "type": "field"
     } 
-
-
-
 
   ]
 },
