@@ -274,7 +274,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
   "outbounds": [
     {
       "protocol": "freedom",
-      "settings": { "domainStrategy": "UseIP" },
+      "settings": { "domainStrategy": "UseIPv4" },
       "tag":"allow"
     },
     
