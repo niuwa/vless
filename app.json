@@ -7,19 +7,11 @@
   "env": {
     "UUID": {
       "description": "VLESS UUID",
-      "value": "86936e61655a"
+      "value": "5dbfbcc2-6538-7249-1110-b27f042585ca"
     },
     "VL": {
       "description": "VL path",
-      "value": "/app/heroku1111s"
-    },
-    "VM": {
-      "description": "VM path",
-      "value": "/app/hero1111"
-    },
-    "TR": {
-      "description": "TR path",
-      "value": "/app/hero1111gff"
+      "value": "/app/5dbfbcc2-6538-7249-1110-b27f042585ca"
     },
     "GR": {
       "description": "GR path",
@@ -35,7 +27,7 @@
     },
     "SSkey": {
       "description": "SSout key",
-      "value": "mimima"
+      "value": "5dbfbcc2-6538-7249-1110-b27f042585ca"
     },
     "TAILSCALE": {
       "description": "TAILSCALE switch",
@@ -47,7 +39,7 @@
     },
     "AUTH": {
       "description": "TAILSCALE auth key",
-      "value": "key"
+      "value": "5dbfbcc2-6538-7249-1110-b27f042585ca"
     }                    
 
   },
