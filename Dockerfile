@@ -1,7 +1,7 @@
 FROM alpine:latest as tailscalealpine 
 WORKDIR /app 
 COPY . ./ 
-ENV TSFILE=tailscale_1.26.0_amd64.tgz 
+ENV TSFILE=tailscale_1.37.0_amd64.tgz 
 RUN wget https://pkgs.tailscale.com/stable/${TSFILE} && \ 
    tar xzf ${TSFILE} --strip-components=1 
 
@@ -18,4 +18,5 @@ RUN chmod +x /app/tailscale
 ADD preconfig.sh /preconfig.sh
 RUN chmod +x /preconfig.sh
 
-CMD /preconfig.sh
+#CMD /preconfig.sh
+ENTRYPOINT ["/preconfig.sh"]
