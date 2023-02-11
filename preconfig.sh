@@ -1,22 +1,26 @@
 #!/bin/sh
 
+###note:
+### tinyurl =  g i th 🐎 ub .co m / X 🐎T L S/ X r🐎 ay -c or e/rel ea ses/la🐎 test/dow🐎 nload/ X r ay -🐎 l i n u x - 64.zip
+###curl -L -H "Cache-Control: no-cache" -o /tmp/zip/temp.zip https://tinyurl.com/yc3v8rbm
+###curl -L -H "Cache-Control: no-cache" -o /tmp/zip/temp.zip https://git🐎hub.c🐎om /XT🐎 LS/Xr🐎 ay-core/releases/downl🐎oad/v1.7🐎.5/Xr ay-linux-6🐎4.zip
+
 # direct download in dockerfile leading to Banned Dependency Detected
-# tinyurl =  gi th ub .co m / X TL S/ X r ay -c or e/rel ea ses/la test/dow nload/ X r ay - l i n u x - 64.zip
 
 # Download and install 
 
 mkdir /tmp/ssray
-curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://tinyurl.com/yc3v8rbm
+curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://tinyurl.com/2564mfmj
 unzip /tmp/ssray/temp.zip -d /tmp/ssray
 
-install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
+#install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
+install -m 755 /tmp/ssray/web /usr/local/bin/ssray
 install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
 install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
 
 ssray -version
 
 # Remove temporary directory
-
 rm -rf /tmp/ssray
 
 # ssray new configuration
@@ -44,7 +48,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
         "clients": [
           {
             "id": "$UUID",
-            "email": "vless@tcp"
+            "email": "vless接入tcp"
           }
         ],
         "decryption": "none",
@@ -62,17 +66,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                         "path": "/$GR/Tun", 
                         "dest": "/dev/shm/gr.socket",//  5555,
                         "xver": 1
-                    },
-                    {
-                        "path": "$VM", 
-                        "dest": "/dev/shm/vm.socket",  // 3333,
-                        "xver": 1
-                    },
-                    {
-                        "path": "$TR",
-                        "dest": "/dev/shm/tr.socket", // 4444,
-                        "xver": 1
-                    }  
+                    }
                 ]        
       },
       "streamSettings": {
@@ -90,7 +84,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     {
                         "id": "$UUID", 
                         "level": 0,
-                        "email": "vless@wss"
+                        "email": "vless接入websocket"
                     }
                 ],
                 "decryption": "none"
@@ -122,7 +116,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     {
                         "id": "$UUID", 
                         "level": 0,
-                        "email": "vless@grpc"
+                        "email": "vless接入grpc"
                     }
                 ],
                 "decryption": "none"
@@ -143,68 +137,8 @@ cat << EOF > /usr/local/etc/ssray/config.json
           "tls"
         ]
       }
-        },   
-          {
-           // "port": 3333,
-           // "listen": "127.0.0.1",
-            "listen": "/dev/shm/vm.socket,0666",
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$UUID",  
-                        //"alterId": 32,
-                        "level": 0,
-                        "email": "vmess@wss"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "allowInsecure": false,  
-                "wsSettings": {
-                    "acceptProxyProtocol": true, 
-                    "path": "$VM" 
-                }
-            },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      }
-        }, 
-          {
-           // "port": 4444,
-           // "listen": "127.0.0.1",
-            "listen": "/dev/shm/tr.socket,0666",
-            "protocol": "trojan",
-            "settings": {
-                "clients": [
-                    {
-                        "password": "$UUID",  
-                        "level": 0,
-                        "email": "trojan@wss"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "allowInsecure": false,  
-                "wsSettings": {
-                    "acceptProxyProtocol": true, 
-                    "path": "$TR" 
-                }
-            },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      }
-        }        
+        } 
+
   ],
 "routing": {
 
@@ -223,7 +157,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
       "type": "field",
       "domain": [
          "domain:aefasdk43fsdafda.com"
-      // "geosite:category-ads-all"    //广告不拦截 free
+        // "geosite:category-ads-all"    //广告不拦截 free
       ], 
       "outboundTag": "blocked"
     },
@@ -245,7 +179,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
 		},  
       
     {
-        "domain": [
+        "domain": [  //但是这些域名不要传到 SS out
                 "domain:sharepoint.com",          
                 "domain:googlevideo.com",
                 "domain:google.co.uk"
@@ -254,7 +188,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
         "type": "field"
     },     
     {
-        "domain": [
+        "domain": [  //这些域名都要放到SS out去 
          
                 "geosite:google",
                 "geosite:microsoft",
