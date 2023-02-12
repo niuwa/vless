@@ -1,0 +1,60 @@
+//local.json 最简单本地1090转发到warp
+{
+  "inbounds": [
+    {
+      "port": 1090,
+      "protocol": "socks",
+	  "tag": "socks-to-warp",
+      "listen": "127.0.0.1",   
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {"type": "none"}
+        },
+        "security": "none"
+      },
+      "settings": { "auth": "noauth" }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": { "domainStrategy": "UseIPv4" },
+      "tag": "direct"
+    },
+    {
+      "protocol": "wireguard",
+      "settings": {
+	 
+        "secretKey": "KE15mDaOsjHbbC9vwR9AkYIDjN+zwrn/H7S00000000=",
+        "peers": [
+          {
+            "publicKey": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo5100000000=",
+            "endpoint": "162.159.195.3:2408"
+            //"endpoint": "[2606:4700:d1::a29f:c005]:2408"
+          }
+        ]
+      },
+      "tag": "warp"     
+	  },  
+    {
+      "protocol": "blackhole",
+      "tag": "blocked"        }
+  ],
+  "log": { "loglevel": "none"  },
+  "dns": {
+    "servers": [
+      "223.5.5.5", 
+      "localhost" ]
+  },
+  "routing": {
+	"domainStrategy": "AsIs",
+    "rules": [
+		{   
+		"type": "field",
+		"inboundTag": ["socks-to-warp"],
+		"outboundTag": "warp"
+		}
+    ]
+  }
+}
