@@ -57,13 +57,13 @@ cat << EOF > /usr/local/etc/ssray/config.json
                         "dest": "198.49.23.144:80"
                     },
                     {
-                        "path": "$VL", 
+                        "path": "${VL}", 
                         "dest": "/dev/shm/vl.socket",// 2222,
                         "xver": 1
                     },
                     
                     {
-                        "path": "/$GR/Tun", 
+                        "path": "/${GR}/Tun", 
                         "dest": "/dev/shm/gr.socket",//  5555,
                         "xver": 1
                     }
@@ -82,7 +82,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
             "settings": {
                 "clients": [
                     {
-                        "id": "$UUID", 
+                        "id": "${UUID}", 
                         "level": 0,
                         "email": "vless接入websocket"
                     }
@@ -95,7 +95,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 "allowInsecure": false,  
                 "wsSettings": {
                     "acceptProxyProtocol": true, 
-                    "path": "$VL" 
+                    "path": "${VL}" 
                 }
             },
       "sniffing": {
@@ -114,7 +114,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
             "settings": {
                 "clients": [
                     {
-                        "id": "$UUID", 
+                        "id": "${UUID}", 
                         "level": 0,
                         "email": "vless接入grpc"
                     }
@@ -127,7 +127,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 "allowInsecure": false,  
                 "grpcSettings": {
                     "acceptProxyProtocol": true, 
-                    "serviceName": "$GR" 
+                    "serviceName": "${GR}" 
                 }
             },
       "sniffing": {
@@ -217,10 +217,10 @@ cat << EOF > /usr/local/etc/ssray/config.json
       "settings": {
           "servers": [
               {
-                  "address": "$SShost",
+                  "address": "${SShost}",
                   "port": 32824,
                   "method": "chacha20-ietf-poly1305",
-                  "password": "$SSkey"
+                  "password": "${SSkey}"
               }
           ]
       },
@@ -242,7 +242,7 @@ EOF
 
 # Run tailscale and ray  refer to https://tailscale.com/kb/1112/userspace-networking/
 
-if $TAILSCALE = "true"; then
+if ${TAILSCALE} = "true"; then
 
 /app/tailscaled --tun=userspace-networking --socks5-server=localhost:1059 & 
 until /app/tailscale up --authkey=${AUTH} --hostname=${HOST} --advertise-exit-node 
