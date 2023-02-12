@@ -42,12 +42,12 @@ cat << EOF > /usr/local/etc/ssray/config.json
   
   "inbounds": [
     { 
-      "port": $PORT,
+      "port": ${PORT},
       "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "id": "$UUID",
+            "id": "${UUID}",
             "email": "vless接入tcp"
           }
         ],
