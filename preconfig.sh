@@ -54,7 +54,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
         "decryption": "none",
                 "fallbacks": [
                     {
-                        "dest": "198.49.23.144:80"
+                        "dest": "109.228.56.253:80"  //198.49.23.144
                     },
                     {
                         "path": "${VL}", 
