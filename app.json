@@ -11,11 +11,11 @@
     },
     "VL": {
       "description": "VL path",
-      "value": "/app/5dbfbcc2-6538-7249-1110-b27f042585ca"
+      "value": "/app/5dbhbcc2-6538-7239-1110-b27f042585ca"
     },
     "GR": {
       "description": "GR path",
-      "value": "app.grpcnamemin"
+      "value": "app.grpcnameminshine"
     },
     "PORT": {
       "description": "listen",
@@ -27,7 +27,7 @@
     },
     "SSkey": {
       "description": "SSout key",
-      "value": "5dbfbcc2-6538-7249-1110-b27f042585ca"
+      "value": "9fOIRlz8+l1MtfCnMHciKAM3DjWrdanGtGyfIlSkkAg="
     },
     "TAILSCALE": {
       "description": "TAILSCALE switch",
@@ -35,7 +35,7 @@
     },
     "HOST": {
       "description": "TAILSCALE hostname",
-      "value": "heroku"
+      "value": "tailscalehostname"
     },
     "AUTH": {
       "description": "TAILSCALE auth key",
