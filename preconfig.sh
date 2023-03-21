@@ -1,44 +1,51 @@
 #!/bin/sh
 
 ###note:
-### tinyurl =  g i th 🐎 ub .co m / X  🐎T L S/ X r🐎 ay -c or e/rel ea ses/la🐎 test/dow🐎 nload/ X r ay -🐎 l i n u x - 64.zip
+###tinyurl =  g i th 🐎 ub .co m / X  🐎T L S/ X r🐎 ay -c or e/rel ea ses/la🐎 test/dow🐎 nload/ X r ay -🐎 l i n u x - 64.zip
 ###curl -L -H "Cache-Control: no-cache" -o /tmp/zip/temp.zip https://tinyurl.com/yc3v8rbm
 ###curl -L -H "Cache-Control: no-cache" -o /tmp/zip/temp.zip https://git🐎hub.c🐎om /XT🐎 LS/Xr🐎 ay-core/releases/downl🐎oad/v1.7🐎.5/Xr ay-linux-6🐎4.zip
 
 # direct download in dockerfile leading to Banned Dependency Detected
 
-# Download and install 
+# install 
 
-mkdir /tmp/ssray
-curl -L -H "Cache-Control: no-cache" -o /tmp/ssray/temp.zip https://tinyurl.com/2564mfmj
-unzip /tmp/ssray/temp.zip -d /tmp/ssray
+mkdir /tmp/pufa
+curl -L -H "Cache-Control: no-cache" -o /tmp/pufa/temp.zip https://tinyurl.com/2564mfmj
+unzip /tmp/pufa/temp.zip -d /tmp/pufa
 
-#install -m 755 /tmp/ssray/xray /usr/local/bin/ssray
-install -m 755 /tmp/ssray/web /usr/local/bin/ssray
-install -m 755 /tmp/ssray/geosite.dat /usr/local/bin/geosite.dat
-install -m 755 /tmp/ssray/geoip.dat /usr/local/bin/geoip.dat
+install -m 755 /tmp/pufa/web /usr/local/bin/web
+install -m 755 /tmp/pufa/geosite.dat /usr/local/bin/geosite.dat
+install -m 755 /tmp/pufa/geoip.dat /usr/local/bin/geoip.dat
 
-ssray -version
+/usr/local/bin/web -version
+
+
+
+
 
 # Remove temporary directory
-rm -rf /tmp/ssray
+rm -rf /tmp/pufa
+
+
+
 
 # ssray new configuration
 
-install -d /usr/local/etc/ssray
-cat << EOF > /usr/local/etc/ssray/config.json
+install -d /usr/local/etc/web
+
+cat << EOF > /usr/local/etc/web/config.json
 {
-  "log": {
-    "loglevel": "info"
-  },
+	 "log": {
+	    "loglevel": "info"
+	  },
   
-    "dns": {
-    "servers": [
-      "https+local://1.1.1.1/dns-query", 
-      "8.8.8.8",
-      "localhost"
-    ]
-  },
+	"dns": {
+	"servers": [
+	"https+local://1.1.1.1/dns-query", 
+	"8.8.8.8",
+	"localhost"
+	]
+	},
   
   "inbounds": [
     { 
@@ -58,13 +65,12 @@ cat << EOF > /usr/local/etc/ssray/config.json
                     },
                     {
                         "path": "${VL}", 
-                        "dest": "/dev/shm/vl.socket",// 2222,
+                        "dest": "/dev/shm/vl.socket",
                         "xver": 1
                     },
-                    
                     {
                         "path": "/${GR}/Tun", 
-                        "dest": "/dev/shm/gr.socket",//  5555,
+                        "dest": "/dev/shm/gr.socket",
                         "xver": 1
                     }
                 ]        
@@ -75,8 +81,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
       }
     },
         {
-            //"port": 2222,
-            //"listen": "127.0.0.1",
             "listen": "/dev/shm/vl.socket,0666",
             "protocol": "vless",
             "settings": {
@@ -107,8 +111,6 @@ cat << EOF > /usr/local/etc/ssray/config.json
       }
         },     
         {
-            //"port": 5555,  GRPC需要cadd y分流才可以
-            //"listen": "127.0.0.1",
             "listen": "/dev/shm/gr.socket,0666",
             "protocol": "vless",
             "settings": {
@@ -145,12 +147,10 @@ cat << EOF > /usr/local/etc/ssray/config.json
 "domainStrategy": "IPIfNonMatch",
 
   "rules": [
-
-
     {
-			"type": "field",
-			"ip": ["geoip:private"],
-			"outboundTag": "blocked"
+	"type": "field",
+	"ip": ["geoip:private"],
+	"outboundTag": "blocked"
 		},
       
     {  
@@ -162,21 +162,21 @@ cat << EOF > /usr/local/etc/ssray/config.json
       "outboundTag": "blocked"
     },
       
-    {
-        "domain": [
-            "domain:google.co.nz",
-            "geosite:cn"
-        ],
-        "outboundTag": "SSout",
-        "type": "field"
-    },              
-		{
-  			"ip": [
-  				"geoip:cn"
-  			],
-			"outboundTag": "SSout",
-			"type": "field"
-		},  
+	{
+		"domain": [
+		    "domain:google.co.nz",
+		    "geosite:cn"
+		],
+		"outboundTag": "SSout",
+		"type": "field"
+	},              
+	{
+		"ip": [
+			"geoip:cn"
+		],
+		"outboundTag": "SSout",
+		"type": "field"
+	},  
       
     {
         "domain": [  //但是这些域名不要传到 SS out
@@ -184,12 +184,11 @@ cat << EOF > /usr/local/etc/ssray/config.json
                 "domain:googlevideo.com",
                 "domain:google.co.uk"
         ],
-        "outboundTag": "allow",
+        "outboundTag": "direct",
         "type": "field"
     },     
     {
         "domain": [  //这些域名都要放到SS out去 
-         
                 "geosite:google",
                 "geosite:microsoft",
                 "geosite:facebook",
@@ -209,7 +208,7 @@ cat << EOF > /usr/local/etc/ssray/config.json
     {
       "protocol": "freedom",
       "settings": { "domainStrategy": "UseIPv4" },
-      "tag":"allow"
+      "tag":"direct"
     },
     
     {
@@ -232,13 +231,13 @@ cat << EOF > /usr/local/etc/ssray/config.json
     
         {
             "protocol": "blackhole",
-            "tag": "block"
+            "tag": "blocked"
         }
   ]
 }
 EOF
 
-#echo "App is running" > /var/www/localhost/htdocs/index.html
+# echo "App is running" > /var/www/localhost/htdocs/index.html
 
 # Run tailscale and ray  refer to https://tailscale.com/kb/1112/userspace-networking/
 
@@ -254,11 +253,11 @@ done
 #echo Tailscale started
 #ALL_PROXY=socks5://localhost:1059/
 
-/usr/local/bin/ssray -config /usr/local/etc/ssray/config.json
+/usr/local/bin/web -config /usr/local/etc/web/config.json
 
 else
-#tailscale false
+#tailscale = false
 
-/usr/local/bin/ssray -config /usr/local/etc/ssray/config.json
+/usr/local/bin/web -config /usr/local/etc/web/config.json
 
 fi
