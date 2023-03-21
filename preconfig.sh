@@ -218,13 +218,13 @@ cat << EOF > /usr/local/etc/web/config.json
               {
                   "address": "${SShost}",
                   "port": 32824,
-                  "method": "chacha20-ietf-poly1305",
+                  "method": "2022-blake3-aes-128-gcm",
                   "password": "${SSkey}"
               }
           ]
       },
       "streamSettings": {
-          "network": "tcp"
+          "network": "tcp,udp"
       },
       "tag": "SSout"
     },  
