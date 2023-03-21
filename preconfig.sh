@@ -83,6 +83,7 @@ cat << EOF > /usr/local/etc/web/config.json
         {
             "listen": "/dev/shm/vl.socket,0666",
             "protocol": "vless",
+	    "tag":"INPUTvlesswss",
             "settings": {
                 "clients": [
                     {
@@ -161,7 +162,16 @@ cat << EOF > /usr/local/etc/web/config.json
       ], 
       "outboundTag": "blocked"
     },
-      
+    
+// 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
+ 
+    {
+	"type": "field",
+	"inboundTag": "INPUTvlesswss",
+	"outboundTag": "SSout"
+		}, 
+    
+
 	{
 		"domain": [
 		    "domain:google.co.nz",
@@ -178,6 +188,8 @@ cat << EOF > /usr/local/etc/web/config.json
 		"type": "field"
 	},  
       
+      
+
     {
         "domain": [  //但是这些域名不要传到 SS out
                 "domain:sharepoint.com",          
@@ -186,22 +198,24 @@ cat << EOF > /usr/local/etc/web/config.json
         ],
         "outboundTag": "direct",
         "type": "field"
-    },     
-    {
-        "domain": [  //这些域名都要放到SS out去 
-                "geosite:google",
-                "geosite:microsoft",
-                "geosite:facebook",
-                "geosite:twitter",
-                "geosite:github",
-                "geosite:netflix",
-                "domain:exoticaz.to",
-		"domain:chat.openai.com",
-                "domain:openai.com"
-        ],
-        "outboundTag": "SSout",
-        "type": "field"
-    } 
+    }//,   
+    
+    
+//    {
+//        "domain": [  //这些域名都要放到SS out去 
+//                "geosite:google",
+//                "geosite:microsoft",
+//                "geosite:facebook",
+//                "geosite:twitter",
+//                "geosite:github",
+//                "geosite:netflix",
+//                "domain:exoticaz.to",
+//		"domain:chat.openai.com",
+//                "domain:openai.com"
+//        ],
+//        "outboundTag": "SSout",
+//        "type": "field"
+//    } 
 
   ]
 },
