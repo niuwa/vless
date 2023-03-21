@@ -218,7 +218,7 @@ cat << EOF > /usr/local/etc/web/config.json
               {
                   "address": "${SShost}",
                   "port": 32824,
-                  "method": "2022-blake3-aes-128-gcm",
+                  "method": "2022-blake3-aes-256-gcm",
                   "password": "${SSkey}"
               }
           ]
