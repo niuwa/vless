@@ -224,7 +224,7 @@ cat << EOF > /usr/local/etc/web/config.json
           ]
       },
       "streamSettings": {
-          "network": "tcp,udp"
+          "network": "tcp"
       },
       "tag": "SSout"
     },  
