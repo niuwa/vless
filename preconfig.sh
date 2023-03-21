@@ -196,6 +196,7 @@ cat << EOF > /usr/local/etc/web/config.json
                 "geosite:github",
                 "geosite:netflix",
                 "domain:exoticaz.to",
+		"domain:chat.openai.com",
                 "domain:openai.com"
         ],
         "outboundTag": "SSout",
