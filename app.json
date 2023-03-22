@@ -1,12 +1,12 @@
 {
-  "name": "xray vless",
-  "description": "Deploy vless on Heroku.",
+  "name": "vles",
+  "description": "Deploy vles on Heroku.",
   "keywords": [
     "vless"
   ],
   "env": {
     "UUID": {
-      "description": "VLESS UUID",
+      "description": "VLES UUID",
       "value": "5dbfbcc2-6538-7249-1110-b27f042585ca"
     },
     "VL": {
