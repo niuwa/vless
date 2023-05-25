@@ -4,10 +4,9 @@
 ###tinyurl =  g i th 🐎 ub .co m / X  🐎T L S/ X r🐎 ay -c or e/rel ea ses/la🐎 test/dow🐎 nload/ X r ay -🐎 l i n u x - 64.zip
 ###curl -L -H "Cache-Control: no-cache" -o /tmp/zip/temp.zip https://tinyurl.com/yc3v8rbm
 ###curl -L -H "Cache-Control: no-cache" -o /tmp/zip/temp.zip https://git🐎hub.c🐎om /XT🐎 LS/Xr🐎 ay-core/releases/downl🐎oad/v1.7🐎.5/Xr ay-linux-6🐎4.zip
+###direct download in dockerfile leading to 'Banned Dependency Detected'
 
-# direct download in dockerfile leading to Banned Dependency Detected
-
-# install 
+#  install   #  #  #  #  #  #  #  #  #  #  
 
 mkdir /tmp/pufa
 curl -L -H "Cache-Control: no-cache" -o /tmp/pufa/temp.zip https://tinyurl.com/2564mfmj
@@ -20,16 +19,13 @@ install -m 755 /tmp/pufa/geoip.dat /usr/local/bin/geoip.dat
 /usr/local/bin/web -version
 
 
-
-
-
-# Remove temporary directory
+# Remove temporary directory #  #  #  #  
 rm -rf /tmp/pufa
 
 
 
 
-# ssray new configuration
+# service new configuration   #  #  #  #  
 
 install -d /usr/local/etc/web
 
@@ -61,7 +57,7 @@ cat << EOF > /usr/local/etc/web/config.json
         "decryption": "none",
                 "fallbacks": [
                     {
-                        "dest": "109.228.56.253:80"  //198.49.23.144
+                        "dest": "109.228.56.253:80"  //  or  198.49.23.144
                     },
                     {
                         "path": "${VL}", 
@@ -157,20 +153,32 @@ cat << EOF > /usr/local/etc/web/config.json
     {  
       "type": "field",
       "domain": [
+         // "geosite:category-ads-all",    //广告拦截
          "domain:aefasdk43fsdafda.com"
-        // "geosite:category-ads-all"    //广告不拦截 free
       ], 
       "outboundTag": "blocked"
     },
     
-// 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
- 
+    {
+        "domain": [  
+                //"domain:sharepoint.com",          
+                "domain:googlevideo.com",
+		"geosite:category-porn",
+                //"domain:google.co.uk",
+                "domain:srgretegfxret4rdrgsgsdr.com"   
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+    },
+    
+
+    // 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
     {
 	"type": "field",
 	"inboundTag": "INPUTvlesswss",
 	"outboundTag": "SSout"
 		}, 
-    
+    // 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
 
 	{
 		"domain": [
@@ -186,21 +194,9 @@ cat << EOF > /usr/local/etc/web/config.json
 		],
 		"outboundTag": "SSout",
 		"type": "field"
-	},  
-      
+	} 
       
 
-    {
-        "domain": [  //但是这些域名不要传到 SS out
-                "domain:sharepoint.com",          
-                "domain:googlevideo.com",
-                "domain:google.co.uk"
-        ],
-        "outboundTag": "direct",
-        "type": "field"
-    }//,   
-    
-    
 //    {
 //        "domain": [  //这些域名都要放到SS out去 
 //                "geosite:google",
