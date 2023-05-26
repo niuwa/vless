@@ -183,6 +183,7 @@ cat << EOF > /usr/local/etc/web/config.json
 	{
 		"domain": [
 		    "domain:google.co.nz",
+		    "domain:openai.com",
 		    "geosite:cn"
 		],
 		"outboundTag": "SSout",
