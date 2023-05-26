@@ -172,13 +172,13 @@ cat << EOF > /usr/local/etc/web/config.json
     },
     
 
-    // 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
-    {
-	"type": "field",
-	"inboundTag": "INPUTvlesswss",
-	"outboundTag": "SSout"
-		}, 
-    // 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
+   // 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
+   // {
+   //	"type": "field",
+   //	"inboundTag": "INPUTvlesswss",
+   //	"outboundTag": "SSout"
+   //		}, 
+   // 🐎🐎🐎🐎🐎 在这里二选一  🐎🐎🐎🐎🐎 //  这是全局转发到SSout， 如果SSout损坏的时候就注释掉，就直接默认direct(只有cn走SSout  基本上不受影响)
 
 	{
 		"domain": [
